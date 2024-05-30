@@ -26,18 +26,18 @@ class BigRectangle {
     this.y = random(0, canvasSize - this.height);
   }
 
-  resetPosition() {
-    this.x = this.baseX;
-    this.y = this.baseY;
+  // Modify the resetPosition method to accept canvasSize as a parameter
+  resetPosition(canvasSize) {
+    this.x = this.baseX * canvasSize; // Adjust x position based on current canvas size
+    this.y = this.baseY * canvasSize; // Adjust y position based on current canvas size
   }
+
 
   // Method to display the rectangle
   display() {
     fill(this.color);  // Set the fill color for the rectangle
     noStroke();        // Remove the stroke (outline) of the shape
     rect(this.x, this.y, this.width, this.height);  // Draw the rectangle
-
-
   }
 }
 
@@ -227,12 +227,6 @@ function mousePressed() {
   bigRectangles.forEach(rectangle => rectangle.randomizePosition(canvasSize));
 }
 
-// Add the keyTyped function at the end of the script
-function keyTyped() {
-  if (key === ' ') { // When the spacebar is pressed
-    bigRectangles.forEach(rectangle => rectangle.resetPosition());
-  }
-}
 // Function to draw a row of colored squares
 function drawRow(x, y, w, h, colors) {
   for (let i = 0; i < colors.length; i++) {
@@ -254,7 +248,7 @@ function windowResized() {
   let canvasSize = min(windowWidth, windowHeight);
   resizeCanvas(canvasSize, canvasSize);
   
- // When the window size changes, resize all BigRectangles
+  // When the window size changes, resize all BigRectangles
 bigRectangles.forEach(rectangle => {
   rectangle.resize(canvasSize);
 });
@@ -263,17 +257,14 @@ bigRectangles.forEach(rectangle => {
 draw();
 }
 
-// Function to reset the position and size of the rectangles when the spacebar is pressed
+
+// Add or modify the keyTyped function at the end of the script
 function keyTyped() {
-  if (key === ' ') {
-    // Reset the position of all BigRectangles to the initial state
+  if (key === ' ') { // When the spacebar is pressed
+    let canvasSize = min(windowWidth, windowHeight); // Get the current canvas size
     bigRectangles.forEach(rectangle => {
-      rectangle.resetPosition();
-      // Reset size, uncomment the lines below if you need to maintain the initial size
-      // rectangle.width = rectangle.baseWidth;
-      // rectangle.height = rectangle.baseHeight;
+      rectangle.resetPosition(canvasSize); // Pass the current canvas size to resetPosition
     });
-    // Redraw the canvas
-    draw();
+    draw(); // Redraw the canvas
   }
 }
