@@ -33,24 +33,24 @@ class BigRectangle {
     this.y = this.baseY * canvasSize; // Adjust y position based on current canvas size
   }
 
- // Initialize the velocity vector
-initVelocity() {
-  this.velocity = createVector(random(-1, 5), random(-1, 5));
-}
-
-// Update position and handle bouncing
-updatePosition(canvasSize) {
-  this.x += this.velocity.x;
-  this.y += this.velocity.y;
-
-  // Check if touching the canvas edges and bounce
-  if (this.x > canvasSize - this.width || this.x < 0) {
-    this.velocity.x *= -1;
+  // Initialize the velocity vector
+  initVelocity() {
+    this.velocity = createVector(random(-1, 5), random(-1, 5));
   }
-  if (this.y > canvasSize - this.height || this.y < 0) {
-    this.velocity.y *= -1;
+
+  // Update position and handle bouncing
+  updatePosition(canvasSize) {
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+
+    // Check if touching the canvas edges and bounce
+    if (this.x > canvasSize - this.width || this.x < 0) {
+      this.velocity.x *= -1;
+    }
+    if (this.y > canvasSize - this.height || this.y < 0) {
+      this.velocity.y *= -1;
+    }
   }
-}
 
   // Method to display the rectangle
   display() {
@@ -127,7 +127,7 @@ function draw() {
   let rectWidth = canvasSize * 0.022;
   let rectHeight = canvasSize * 0.02;
 
-//Draw rows and columns
+  //Draw rows and columns
   translate(0, canvasSize * 0.56);
   noStroke();
   drawRow(0, 0, rectWidth, rectHeight,
@@ -161,7 +161,7 @@ function draw() {
 
 
   // the first row
-  drawRow(0, canvasSize * -0.51, rectWidth, rectHeight*1.02,
+  drawRow(0, canvasSize * -0.51, rectWidth, rectHeight * 1.02,
     [yellow, blue, yellow, yellow, yellow, yellow, yellow, blue, yellow, grey, yellow, yellow, yellow, yellow, yellow, grey, yellow,
       yellow, yellow, yellow, yellow, yellow, yellow, yellow, grey, yellow, grey, yellow, grey, yellow, yellow, yellow, yellow, yellow,
       grey, grey, yellow, yellow, yellow, grey, blue, yellow, grey, yellow, blue, grey, yellow, grey]);
@@ -208,12 +208,12 @@ function draw() {
   //second column from the right
   drawColumn(canvasSize * 0.912, 0, rectWidth, rectNewHeight,
     [yellow, blue, grey, yellow, grey, blue, blue]);
-  drawColumn(canvasSize * 0.912, canvasSize * 0.179, rectWidth, rectNewHeight*0.98,
+  drawColumn(canvasSize * 0.912, canvasSize * 0.179, rectWidth, rectNewHeight * 0.98,
     [yellow, grey, red, red, red, grey, yellow, grey, yellow, grey, yellow, yellow, red]);
   drawColumn(canvasSize * 0.912, canvasSize * 0.64, rectWidth, rectNewHeight,
     [red, grey, yellow, yellow, grey, grey, blue, yellow, yellow, grey]);
   //third column
-  drawColumn(canvasSize * 0.868, 0, rectWidth, rectNewHeight*0.96,
+  drawColumn(canvasSize * 0.868, 0, rectWidth, rectNewHeight * 0.96,
     [red, grey, blue, grey, yellow, red, yellow, grey, yellow, grey, red, red, red, grey, yellow, blue, yellow, red]);
 
   //fourth column
@@ -236,7 +236,7 @@ function draw() {
 
 
 
-   // Update and display the position of the moving BigRectangle
+  // Update and display the position of the moving BigRectangle
   bigRectangles.forEach(rectangle => {
     if (rectangle.isMoving) {
       rectangle.updatePosition(canvasSize);
@@ -271,14 +271,14 @@ function drawColumn(x, y, w, h, colors) {
 function windowResized() {
   let canvasSize = min(windowWidth, windowHeight);
   resizeCanvas(canvasSize, canvasSize);
-  
- // When the window size changes, resize all BigRectangles
-bigRectangles.forEach(rectangle => {
-  rectangle.resize(canvasSize);
-});
 
-// Redraw the canvas
-draw();
+  // When the window size changes, resize all BigRectangles
+  bigRectangles.forEach(rectangle => {
+    rectangle.resize(canvasSize);
+  });
+
+  // Redraw the canvas
+  draw();
 }
 
 // Add or modify the keyTyped function at the end of the script
