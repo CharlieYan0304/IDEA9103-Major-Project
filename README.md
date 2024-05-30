@@ -29,8 +29,7 @@ Regarding the inspiration behind my individual code, I initially focused on othe
 Another inspiration for an effect came from memories of watching **old-fashioned television** as a child. When the TV signal was poor, there would be random moving noise and color blocks on the screen. Additionally, the ability to reset the rectangle positions by pressing the spacebar was designed to echo the signal restoration after powering the TV on and off.
 
 * *Television without signal*![Television without signal](readmeImages/image4.jpeg)
-* *Television noise*
-![Television noise](readmeImages/image5.jpg)
+* *Television noise*![Television noise](readmeImages/image5.jpg)
 
 ## Are there any tools or techniques outside of the course used in this work?
 
