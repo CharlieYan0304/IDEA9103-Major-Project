@@ -10,7 +10,7 @@ class BigRectangle {
     this.baseY = y;     // Base y-coordinate for resizing
     this.baseWidth = width; // Base width for resizing
     this.baseHeight = height; // Base height for resizing
-    this.isMoving = false; // 初始化 isMoving 属性为 false
+    this.isMoving = false; // Base isMoving for false
   }
 
   // Method to resize the rectangle based on the new canvas size
@@ -33,7 +33,7 @@ class BigRectangle {
     this.y = this.baseY * canvasSize; // Adjust y position based on current canvas size
   }
 
-// Initialize the velocity vector
+ // Initialize the velocity vector
 initVelocity() {
   this.velocity = createVector(random(-1, 5), random(-1, 5));
 }
@@ -236,14 +236,15 @@ function draw() {
 
 
 
-   // Update the position of the moving BigRectangle
-   bigRectangles.forEach(rectangle => {
+   // Update and display the position of the moving BigRectangle
+  bigRectangles.forEach(rectangle => {
     if (rectangle.isMoving) {
       rectangle.updatePosition(canvasSize);
     }
     rectangle.display();
   });
 }
+
 // Function to handle mouse click events
 function mousePressed() {
   let canvasSize = min(windowWidth, windowHeight);
@@ -271,7 +272,7 @@ function windowResized() {
   let canvasSize = min(windowWidth, windowHeight);
   resizeCanvas(canvasSize, canvasSize);
   
-  // When the window size changes, resize all BigRectangles
+ // When the window size changes, resize all BigRectangles
 bigRectangles.forEach(rectangle => {
   rectangle.resize(canvasSize);
 });
@@ -293,13 +294,17 @@ function keyTyped() {
 
 // Key press event handler function
 function keyPressed() {
-  if (keyCode === ENTER) { // Use keyCode to detect the Enter key
+  if (keyCode === ENTER) { // Check if the Enter key is pressed
     bigRectangles.forEach(rectangle => {
-      if (!rectangle.isMoving) { // If it is not currently moving
-        rectangle.initVelocity(); // Initialize velocity
-        rectangle.isMoving = true; // Set to moving state
+      // Check if the rectangle is moving
+      if (rectangle.isMoving) {
+        // If it is moving, stop it
+        rectangle.isMoving = false;
+      } else {
+        // If it is not moving, initialize velocity and start moving
+        rectangle.initVelocity();
+        rectangle.isMoving = true;
       }
     });
   }
 }
-
