@@ -14,20 +14,20 @@ Upon opening the window, **clicking the left mouse button** will randomly change
 
 ## Which properties in the work are animated?
 
-In this work, the **'BigRectangle'** elements are animated, which are the larger rectangles on the screen. *Unlike other group members, this work primarily focuses on randomly changing the positions of elements on the canvas and provides options for user interaction to control the start and stop of position changes.*
+In this work, the **'BigRectangle'** elements are animated, which are the larger rectangles on the screen. Unlike other group members, this work primarily focuses on randomly changing the positions of elements on the canvas and provides options for user interaction to control the start and stop of position changes.
 
 ## What was the inspiration behind the work?
 
 Regarding the inspiration behind my individual code, I initially focused on other works by the original artist *Piet Mondrian* and found many of them to be quite similar, with only changes in the positions of color blocks. Therefore, I incorporated a design to change the positions of color blocks in my code to echo this variation. 
 
-* Composition in Colour A, Piet Mondrian, 1917.[Image of Composition in Colour A](readmeImages/image3.jpg)
-* Piet Mondrian, Composition with Red, Blue, and Yellow, Piet Mondrian, 1930. https://smarthistory.org/[image of Composition with Red, Blue, and Yellow](readmeImages/image1.jpeg)
-* New York City 1, Piet Mondrian, 1942. https://krollermuller.nl/[Image of New York City 1](readmeImages/image2.jpg)
+* *Composition in Colour A, Piet Mondrian, 1917.*[Image of Composition in Colour A](readmeImages\image3.jpg)
+* *Piet Mondrian, Composition with Red, Blue, and Yellow, Piet Mondrian, 1930. https://smarthistory.org/*[image of Composition with Red, Blue, and Yellow](readmeImages/image1.jpeg)
+* *New York City 1, Piet Mondrian, 1942. https://krollermuller.nl/*[Image of New York City 1](readmeImages\image2.jpg)
 
 Another inspiration for an effect came from memories of watching **old-fashioned television** as a child. When the TV signal was poor, there would be random moving noise and color blocks on the screen. Additionally, the ability to reset the rectangle positions by pressing the spacebar was designed to echo the signal restoration after powering the TV on and off.
 
-* Television without signal[Television without signal](readmeImages/image4.jpeg)
-* Television noise[Television noise](readmeImages/image5.jpg)
+* *Television without signal*[Television without signal](readmeImages\image4.jpeg)
+* *Television noise*[Television noise](readmeImages\image5.jpg)
 
 ## Are there any tools or techniques outside of the course used in this work?
 
@@ -36,6 +36,7 @@ Velocity was used to represent the distance and direction an object moves within
 In animations, velocity is used to create smooth movement effects.
 * **Collision Detection and Response:**
 When the rectangular blocks are moving and may collide with the boundaries, velocity can be used to detect collisions and calculate post-collision behaviors, such as bouncing.
+
 Specifically applied in the code for:
 
 ```javascript
