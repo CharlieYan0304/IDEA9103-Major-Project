@@ -26,13 +26,21 @@ class BigRectangle {
     this.y = random(0, canvasSize - this.height);
   }
 
+  resetPosition() {
+    this.x = this.baseX;
+    this.y = this.baseY;
+  }
+
   // Method to display the rectangle
   display() {
     fill(this.color);  // Set the fill color for the rectangle
     noStroke();        // Remove the stroke (outline) of the shape
     rect(this.x, this.y, this.width, this.height);  // Draw the rectangle
+
+
   }
 }
+
 
 let bigRectangles = [];  // Initialize an empty array to store big rectangle objects
 
@@ -41,10 +49,6 @@ let yellow = '#EBCF14';
 let red = '#A53A32';
 let blue = '#39468C';
 let grey = '#D8D6C7';
-
-// Add variables to control the movement speed of rows and columns
-let rowSpeed = 2;
-let columnSpeed = 2;
 
 // The setup function to initialize the canvas and create rectangle objects
 function setup() {
@@ -103,15 +107,6 @@ function draw() {
   // Define the size ratio of small squares to the canvas
   let rectWidth = canvasSize * 0.022;
   let rectHeight = canvasSize * 0.02;
-
-// If space is pressed, move rows up and columns to the right
-if (keyIsPressed && key === ' ') {
-  translate(0, -rowSpeed);
-  translate(columnSpeed, 0);
-}
-
-// Reset transformations after drawing
-resetMatrix();
 
 //Draw rows and columns
   translate(0, canvasSize * 0.56);
@@ -232,6 +227,12 @@ function mousePressed() {
   bigRectangles.forEach(rectangle => rectangle.randomizePosition(canvasSize));
 }
 
+// Add the keyTyped function at the end of the script
+function keyTyped() {
+  if (key === ' ') { // When the spacebar is pressed
+    bigRectangles.forEach(rectangle => rectangle.resetPosition());
+  }
+}
 // Function to draw a row of colored squares
 function drawRow(x, y, w, h, colors) {
   for (let i = 0; i < colors.length; i++) {
@@ -248,28 +249,31 @@ function drawColumn(x, y, w, h, colors) {
   }
 }
 
-// Adjust canvas size when window is resized
+// Adjust canvas size and resize rectangles when window is resized
 function windowResized() {
   let canvasSize = min(windowWidth, windowHeight);
   resizeCanvas(canvasSize, canvasSize);
-  draw(); // redraw the canvas after resizing
+  
+ // When the window size changes, resize all BigRectangles
+bigRectangles.forEach(rectangle => {
+  rectangle.resize(canvasSize);
+});
+
+// Redraw the canvas
+draw();
 }
 
-// Function to check if an element is out of the canvas and stop moving it
-function isOutOfBounds(x, y, width, height) {
-  return x > width || y > height;
-}
-
-// Override the default keyTyped function to handle spacebar press
+// Function to reset the position and size of the rectangles when the spacebar is pressed
 function keyTyped() {
   if (key === ' ') {
-    // Move rows and columns on spacebar press
-    for (let i = 0; i < bigRectangles.length; i++) {
-      let rect = bigRectangles[i];
-      if (!isOutOfBounds(rect.x, rect.y, width, height)) {
-        rect.x += columnSpeed;
-        rect.y -= rowSpeed;
-      }
-    }
+    // Reset the position of all BigRectangles to the initial state
+    bigRectangles.forEach(rectangle => {
+      rectangle.resetPosition();
+      // Reset size, uncomment the lines below if you need to maintain the initial size
+      // rectangle.width = rectangle.baseWidth;
+      // rectangle.height = rectangle.baseHeight;
+    });
+    // Redraw the canvas
+    draw();
   }
 }
