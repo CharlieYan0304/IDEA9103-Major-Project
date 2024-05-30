@@ -30,7 +30,7 @@ Another inspiration for an effect came from memories of watching **old-fashioned
 
 * *Television without signal*![Television without signal](readmeImages/image4.jpeg)
 * *Television noise*
-![Television noise](readmeImages/image5.jpg)
+* ![Television noise](readmeImages/image5.jpg)
 
 ## Are there any tools or techniques outside of the course used in this work?
 
