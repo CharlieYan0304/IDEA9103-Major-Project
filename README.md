@@ -1,5 +1,4 @@
 # IDEA9103-Major-Project
-
 ## How to interact with this work?
 
 Upon opening the window, **clicking the left mouse button** will randomly change the position of the bigger rectangle on the canvas. **Pressing the 'ENTER' key** will cause these rectangles to move randomly within the canvas, bouncing off the edges upon contact. **Pressing the 'ENTER' key again** will stop the movement of the large rectangles. If you wish to reset the position of all large rectangles to their initial positions, you can **press the spacebar**.
