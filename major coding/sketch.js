@@ -10,6 +10,7 @@ class BigRectangle {
     this.baseY = y;     // Base y-coordinate for resizing
     this.baseWidth = width; // Base width for resizing
     this.baseHeight = height; // Base height for resizing
+    this.isMoving = false; // 初始化 isMoving 属性为 false
   }
 
   // Method to resize the rectangle based on the new canvas size
@@ -32,6 +33,24 @@ class BigRectangle {
     this.y = this.baseY * canvasSize; // Adjust y position based on current canvas size
   }
 
+// Initialize the velocity vector
+initVelocity() {
+  this.velocity = createVector(random(-1, 5), random(-1, 5));
+}
+
+// Update position and handle bouncing
+updatePosition(canvasSize) {
+  this.x += this.velocity.x;
+  this.y += this.velocity.y;
+
+  // Check if touching the canvas edges and bounce
+  if (this.x > canvasSize - this.width || this.x < 0) {
+    this.velocity.x *= -1;
+  }
+  if (this.y > canvasSize - this.height || this.y < 0) {
+    this.velocity.y *= -1;
+  }
+}
 
   // Method to display the rectangle
   display() {
@@ -217,10 +236,14 @@ function draw() {
 
 
 
-  // Display all the big rectangles by iterating over the array
-  bigRectangles.forEach(rectangle => rectangle.display());
+   // Update the position of the moving BigRectangle
+   bigRectangles.forEach(rectangle => {
+    if (rectangle.isMoving) {
+      rectangle.updatePosition(canvasSize);
+    }
+    rectangle.display();
+  });
 }
-
 // Function to handle mouse click events
 function mousePressed() {
   let canvasSize = min(windowWidth, windowHeight);
@@ -257,7 +280,6 @@ bigRectangles.forEach(rectangle => {
 draw();
 }
 
-
 // Add or modify the keyTyped function at the end of the script
 function keyTyped() {
   if (key === ' ') { // When the spacebar is pressed
@@ -268,3 +290,16 @@ function keyTyped() {
     draw(); // Redraw the canvas
   }
 }
+
+// Key press event handler function
+function keyPressed() {
+  if (keyCode === ENTER) { // Use keyCode to detect the Enter key
+    bigRectangles.forEach(rectangle => {
+      if (!rectangle.isMoving) { // If it is not currently moving
+        rectangle.initVelocity(); // Initialize velocity
+        rectangle.isMoving = true; // Set to moving state
+      }
+    });
+  }
+}
+
