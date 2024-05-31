@@ -47,3 +47,7 @@ initVelocity() {
   this.velocity = createVector(random(-1, 5), random(-1, 5));
 }
 ```
+
+## Are there any designs that didn't work out?
+
+The original plan was that when the user long-presses the left mouse button, the Rows on the canvas start moving from bottom to top, and the Columns start moving from left to right, simulating the effect of a theatre curtain pulling open. However, I couldn't successfully apply this idea in practice, which is a great pity.
