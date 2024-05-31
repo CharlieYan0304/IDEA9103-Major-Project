@@ -5,7 +5,7 @@ Upon opening the window, **clicking the left mouse button** will randomly change
 
 ## What is the individual's approach to animating the group's code?
 
-**The individual's code responds to user input by detecting keyboard and mouse events to achieve dynamic interaction.** The `function mousePressed()` handles mouse click events, calling the `randomizePosition()` method to randomly reposition all rectangles when the mouse is pressed. The `function keyTyped() ` handles keyboard input, specifically the pressing of the spacebar, for moving the rectangles. The `function translate()` and `function resetMatrix()` are used for translating graphics and resetting the transformation matrix, which is useful for drawing rows and columns. Additionally, the `function isOutOfBounds()` checks if elements have moved out of the canvas boundaries and stops their movement if necessary.
+**The individual's code responds to user input by detecting keyboard and mouse events to achieve dynamic interaction.** The `function mousePressed()` handles mouse click events, calling the `randomizePosition()` method to randomly reposition all rectangles when the mouse is pressed. The `function keyTyped()` handles keyboard input, specifically the pressing of the spacebar, for moving the rectangles. The `function translate()` and `function resetMatrix()` are used for translating graphics and resetting the transformation matrix, which is useful for drawing rows and columns. Additionally, the `function isOutOfBounds()` checks if elements have moved out of the canvas boundaries and stops their movement if necessary.
 
 ## What are the main coding techniques used in this work?
 
